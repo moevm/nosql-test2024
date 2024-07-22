@@ -11,7 +11,7 @@ jobs:
     name: "Проверка наличия вики-страницы \"Модель данных\" и разделов \"Нереляционная модель\",  \"Реляционная модель\", \"Сравнение моделей\", \"Вывод\" в ней"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         name: Check wiki
         with:
           repository: ${{github.repository}}.wiki
