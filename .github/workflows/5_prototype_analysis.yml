@@ -20,7 +20,7 @@ jobs:
           echo "
           if ! find ./ | grep -q 'Dockerfile$'
           then
-            echo "::error:: Не найдены файлы с названием \"Dockerfile\"." 
+            echo "::error:: Не найдены файлы с названием Dockerfile." 
             exit 1
           fi
 
