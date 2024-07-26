@@ -6,6 +6,6 @@ ADD requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY app app
+ADD app app
 
-COPY run.py .
+ADD run.py .
