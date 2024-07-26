@@ -17,7 +17,6 @@ jobs:
 
       - name: There are at least one Dockerfile
         run: |
-          echo "
           if ! find ./ | grep -q 'Dockerfile$'
           then
             echo "::error:: Не найдены файлы с названием Dockerfile." 
