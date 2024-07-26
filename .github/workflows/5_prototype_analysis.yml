@@ -14,6 +14,23 @@ jobs:
         name: Check out current commit
         with:
           fetch-depth: 0
+
+      - name: There are at least one Dockerfile
+        run: |
+          echo "
+          if ! find ./ | grep -q 'Dockerfile$'
+          then
+            echo "::error:: Не найдены файлы с названием \"Dockerfile\"." 
+            exit 1
+          fi
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          recursive: true
+          failure-threshold: error
+          override-error: DL3006, DL3000, DL3007, DL3008, DL3009, DL3013, DL3016, DL3018, DL3020, DL3028, DL3037, DL3047, DL4001, DL4003, DL4004
     
       - name: Build docker-compose
         run: |
