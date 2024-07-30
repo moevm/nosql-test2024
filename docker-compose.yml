@@ -70,7 +70,7 @@ services:
 
   reverse-proxy:
     container_name: reverse-proxy
-    image: nginx
+    image: nginx:stable-perl
     ports:
       - "127.0.0.1:3001:80"
     volumes:
