@@ -63,7 +63,7 @@ jobs:
             exit 1
           fi
 
-          if yq '.services.db.volumes' ${dc_file} | grep -q '^[^/]*/'
+          if yq '.services.db.volumes' ${dc_file} | grep -q '^[^/a-zA-Z]*/'
           then
             echo "::error:: Ошибка - в сервисе db  volumes использует монтирование каталогов. Используйте вместо этого именно volumes ( https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose) - это гораздо удобнее и позволяет управлять таким хранилищем через докер."
             exit 1
