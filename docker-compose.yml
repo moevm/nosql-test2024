@@ -58,7 +58,7 @@ services:
       - redis
       - db
     volumes:
-      - ./worker/map_samples:/map_samples
+      - ./worker/map_samples:/map_samples:ro
 
   client:
     container_name: client
@@ -74,8 +74,8 @@ services:
     ports:
       - "127.0.0.1:3001:80"
     volumes:
-      - ./nginx/templates/:/etc/nginx/templates
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/templates/:/etc/nginx/templates:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     environment:
       NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
       CLIENT: "client:80"
