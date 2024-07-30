@@ -6,7 +6,7 @@ services:
     image: mongo:7.0.4
     command: mongod --quiet
     volumes:
-      - ./mongo_data:/data/db
+      - mongo_data:/data/db
 
   redis:
     container_name: redis
