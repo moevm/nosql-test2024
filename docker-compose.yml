@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  mongo:
+  db:
     container_name: mongo
     image: mongo:7.0.4
     command: mongod --quiet
@@ -20,7 +20,7 @@ services:
     command: -A app worker -Q image_process,dev --loglevel=ERROR -c 4
     depends_on:
       - redis
-      - mongo
+      - db
     environment:
       MONGO_URI: "mongodb://mongo:27017/db"
       REDIS_URI: "redis://redis:6379/0"
@@ -33,7 +33,7 @@ services:
     command: -A app worker -Q slice --loglevel=ERROR -c 2
     depends_on:
       - redis
-      - mongo
+      - db
     environment:
       MONGO_URI: "mongodb://mongo:27017/db"
       REDIS_URI: "redis://redis:6379/0"
@@ -56,7 +56,7 @@ services:
       - celery-image
       - celery-slice
       - redis
-      - mongo
+      - db
     volumes:
       - ./worker/map_samples:/map_samples
 
