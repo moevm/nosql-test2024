@@ -78,7 +78,7 @@ jobs:
           # Проверка volumes
           echo "::info:: Ниже будут все volumes всех сервисов"
           yq '.services.*.volumes' ${dc_file}
-          if yq '.services.*.volumes' docker-compose.yml | grep -v ':ro$' | grep -q '^[^/]*/'
+          if yq '.services.*.volumes' ${dc_file} | grep -v ':ro$' | grep -q '^[^/a-zA-Z]*/'
           then
             echo "::error:: Ошибка - у вас есть смонтированные в volumes файлы и/или каталоги без метки ro (read-only, https://docs.docker.com/compose/compose-file/05-services/#short-syntax-5). Монтируемый каталог или файл нужно или копировать на этапе сборки контейнера (если там данные, которые не предполагают изменение), или ставить опцию :ro ."
             exit 1
